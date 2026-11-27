@@ -1,0 +1,206 @@
+:root {
+  --background-color: #f8f9fa;
+  --brand-coral: #ff5757;
+  --brand-coral-dark: #e04444;
+  --brand-green: #2e8b57;
+}
+
+body {
+  background-color: var(--background-color);
+  color: #212529;
+}
+
+#root {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.home-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 1rem;
+}
+
+.home-card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 2rem;
+  max-width: 560px;
+  width: 100%;
+  border: 1px solid #e9ecef;
+}
+
+.home-logo {
+  max-height: 84px;
+  margin-bottom: 1rem;
+}
+
+.home-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.home-subtitle {
+  color: #6c757d;
+  margin-bottom: 1.5rem;
+}
+
+.map-logo {
+  max-height: 44px;
+}
+
+.link {
+  color: var(--brand-coral);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.suggestButton,
+.helloButton {
+  background-color: var(--brand-coral);
+  border: 1px solid var(--brand-coral);
+  color: #ffffff;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 0.55rem 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, opacity 0.2s ease;
+  box-sizing: border-box;
+}
+
+.helloButton {
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.suggestButton:hover:not(:disabled),
+.helloButton:hover:not(:disabled) {
+  background-color: var(--brand-coral-dark);
+  border-color: var(--brand-coral-dark);
+}
+
+.suggestButton.disabled,
+.suggestButton:disabled {
+  background-color: #cccccc;
+  border: 1px solid #999999;
+  color: #555555;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.chip-btn {
+  background: #f1f3f5;
+  border: 1px solid #dee2e6;
+  color: #343a40;
+  border-radius: 999px;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.chip-btn.active {
+  background: var(--brand-coral);
+  border-color: var(--brand-coral);
+  color: #ffffff;
+}
+
+.goodmaps-leaflet-container {
+  width: 100%;
+  height: 430px;
+  border-radius: 10px;
+  border: 1px solid #dee2e6;
+  z-index: 1;
+}
+
+.custom-map-pin-wrapper {
+  background: transparent;
+  border: none;
+}
+
+.custom-map-pin {
+  width: 30px;
+  height: 30px;
+  border-radius: 50% 50% 50% 0;
+  background: var(--brand-coral);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(-45deg);
+  border: 2px solid #ffffff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+}
+
+.custom-map-pin span {
+  transform: rotate(45deg);
+}
+
+.custom-map-pin.selected {
+  background: #198754;
+  transform: rotate(-45deg) scale(1.15);
+}
+
+.activity-info {
+  padding: 1rem;
+  background: #ffffff;
+  border: 1px solid #dee2e6;
+  border-radius: 10px;
+}
+
+.activityName {
+  color: var(--brand-green);
+  font-weight: 700;
+}
+
+.activityOpening {
+  color: #b45309;
+}
+
+.activity-list {
+  max-height: 490px;
+  overflow-y: auto;
+}
+
+.activity-list-item {
+  cursor: pointer;
+  background: #ffffff;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.activity-list-item:hover {
+  background: #fff5f5;
+}
+
+.activity-list-item.selected {
+  border-color: var(--brand-coral) !important;
+  background: #fff0f0;
+}
+
+.city-dropdown {
+  z-index: 1050;
+  max-height: 240px;
+  overflow-y: auto;
+}
+
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
