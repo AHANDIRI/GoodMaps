@@ -1,50 +1,37 @@
-# React + TypeScript + Vite
+# GoodMaps
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Application web permettant de trouver des activités et lieux accessibles (PMR, sensoriel, cognitif, etc.) autour de soi ou dans n'importe quelle ville.
 
-Currently, two official plugins are available:
+## Fonctionnalités principales
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Profil d'accessibilité & préférences** : choix du profil (handicap moteur, sensoriel, mental, psychique, cognitif, multi-handicap, sans handicap) et préférences d'activités sauvegardés localement.
+- **Carte interactive (Leaflet + OpenStreetMap)** : fonctionne directement sans clé API payante.
+- **Recherche par ville/adresse** : géocodage gratuit via Nominatim OpenStreetMap.
+- **Suggestions d'activités adaptées** : via le backend Express (`/api/suggestions`, utilisant OpenAI si `VITE_OPENAI_API_KEY` est définie, sinon l'API OpenStreetMap Overpass) avec repli automatique côté client.
+- **Filtres, distance, favoris et itinéraire** : filtrage par catégorie et mot-clé, calcul de distance, sauvegarde des favoris (`localStorage`), lien itinéraire et contacts.
 
-## Expanding the ESLint configuration
+## Installation et lancement en local
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```bash
+git clone https://github.com/AHANDIRI/GoodMaps.git
+cd GoodMaps
+npm install
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+### Lancer le frontend + l'API (recommandé)
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+```bash
+npm run dev:all
+```
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+- Application web : `http://localhost:5173/`
+- Serveur API Express : `http://localhost:3002`
+
+*(Optionnel)* Créer un fichier `.env` à la racine avec `VITE_OPENAI_API_KEY=...` pour activer les suggestions via OpenAI ; sans clé, l'application utilise automatiquement OpenStreetMap (Overpass API).
+
+### Build de production
+
+```bash
+npm run build
+npm run lint
 ```
