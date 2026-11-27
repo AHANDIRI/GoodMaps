@@ -27,7 +27,7 @@ jobs:
       - name: Install dependencies
         run: npm install --no-audit --no-fund
       - name: Build
-        run: npm run build
+        run: npx tsc -b && npx vite build --mode pages
       - name: Add SPA 404 fallback
         run: cp dist/index.html dist/404.html
       - name: Setup Pages
